@@ -1,5 +1,5 @@
-var dataObject = { 
-	"272822514" : { 
+var dataObject = {
+	"272822514" : {
 	  "firstName": "Billy",
 	  "lastName": "Bob",
 	  "gender": "male",
@@ -9,9 +9,9 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "programmer",
 	  "parents": [],
-	  "currentSpouse": 401222887 
+	  "currentSpouse": 401222887
 	},
-	"401222887" : { 
+	"401222887" : {
 	  "firstName": "Uma",
 	  "lastName": "Bob",
 	  "gender": "female",
@@ -21,9 +21,9 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "assistant",
 	  "parents": [],
-	  "currentSpouse": 272822514 
+	  "currentSpouse": 272822514
 	},
-	"409574486" : { 
+	"409574486" : {
 	  "firstName": "Michael",
 	  "lastName": "Walkens",
 	  "gender": "male",
@@ -33,7 +33,7 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "landscaper",
 	  "parents": [],
-	  "currentSpouse": 260451248 
+	  "currentSpouse": 260451248
 	},
 	"260451248" : {
 	  "firstName": "Jon",
@@ -45,7 +45,7 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "assistant",
 	  "parents": [],
-	  "currentSpouse": 409574486 
+	  "currentSpouse": 409574486
 	},
 	"629807187" : {
 	  "firstName": "Jack",
@@ -57,7 +57,7 @@ var dataObject = {
 	  "eyeColor": "black",
 	  "occupation": "nurse",
 	  "parents": [],
-	  "currentSpouse": 464142841 
+	  "currentSpouse": 464142841
 	},
 	"464142841" : {
 	  "firstName": "Jen",
@@ -69,7 +69,7 @@ var dataObject = {
 	  "eyeColor": "black",
 	  "occupation": "student",
 	  "parents": [],
-	  "currentSpouse": 629807187 
+	  "currentSpouse": 629807187
 	},
 	"982411429" : {
 	  "firstName": "Mister",
@@ -81,7 +81,7 @@ var dataObject = {
 	  "eyeColor": "hazel",
 	  "occupation": "architect",
 	  "parents": [],
-	  "currentSpouse": 595767575 
+	  "currentSpouse": 595767575
 	},
 	"595767575" : {
 	  "firstName": "Missuz",
@@ -93,7 +93,7 @@ var dataObject = {
 	  "eyeColor": "blue",
 	  "occupation": "architect",
 	  "parents": [],
-	  "currentSpouse": 982411429 
+	  "currentSpouse": 982411429
 	},
 	"693243224" : {
 	  "firstName": "Joy",
@@ -105,7 +105,7 @@ var dataObject = {
 	  "eyeColor": "hazel",
 	  "occupation": "doctor",
 	  "parents": [],
-	  "currentSpouse": 693243224 
+	  "currentSpouse": null
 	},
 	"888201200" : {
 	  "firstName": "Mader",
@@ -117,7 +117,7 @@ var dataObject = {
 	  "eyeColor": "black",
 	  "occupation": "landscaper",
 	  "parents": [],
-	  "currentSpouse": 888201200 
+	  "currentSpouse": null
 	},
 	"878013758" : {
 	  "firstName": "Jill",
@@ -128,8 +128,8 @@ var dataObject = {
 	  "weight": 118,
 	  "eyeColor": "brown",
 	  "occupation": "programmer",
-	  "parents": [401222887,401222887],
-	  "currentSpouse": 294874671 
+	  "parents": [401222887],
+	  "currentSpouse": 294874671
 	},
 	"951747547" : {
 	  "firstName": "Ralph",
@@ -140,8 +140,8 @@ var dataObject = {
 	  "weight": 179,
 	  "eyeColor": "blue",
 	  "occupation": "nurse",
-	  "parents": [401222887,401222887],
-	  "currentSpouse": 159819275 
+	  "parents": [401222887],
+	  "currentSpouse": 159819275
 	},
 	"159819275" : {
 	  "firstName": "Jasmine",
@@ -153,7 +153,7 @@ var dataObject = {
 	  "eyeColor": "blue",
 	  "occupation": "assistant",
 	  "parents": [409574486,260451248],
-	  "currentSpouse": 951747547 
+	  "currentSpouse": 951747547
 	},
 	"348457184" : {
 	  "firstName": "Annie",
@@ -165,7 +165,7 @@ var dataObject = {
 	  "eyeColor": "hazel",
 	  "occupation": "landscaper",
 	  "parents": [629807187,464142841],
-	  "currentSpouse": null 
+	  "currentSpouse": null
 	},
 	"294874671" : {
 	  "firstName": "Dave",
@@ -177,7 +177,7 @@ var dataObject = {
 	  "eyeColor": "green",
 	  "occupation": "doctor",
 	  "parents": [629807187,464142841],
-	  "currentSpouse": 878013758 
+	  "currentSpouse": 878013758
 	},
 	"931247228" : {
 	  "firstName": "Amii",
@@ -189,7 +189,7 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "landscaper",
 	  "parents": [629807187,464142841],
-	  "currentSpouse": null 
+	  "currentSpouse": null
 	},
 	"822843554" : {
 	  "firstName": "Regina",
@@ -201,7 +201,7 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "nurse",
 	  "parents": [693243224, 888201200],
-	  "currentSpouse": null 
+	  "currentSpouse": null
 	},
 	"819168108" : {
 	  "firstName": "Hana",
@@ -213,7 +213,7 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "politician",
 	  "parents": [693243224, 888201200],
-	  "currentSpouse": null 
+	  "currentSpouse": null
 	},
 	"969837479" : {
 	  "firstName": "Eloise",
@@ -225,7 +225,7 @@ var dataObject = {
 	  "eyeColor": "brown",
 	  "occupation": "assistant",
 	  "parents": [693243224, 888201200],
-	  "currentSpouse": null 
+	  "currentSpouse": null
 	},
 	"313207561" : {
 	  "firstName": "Mattias",
@@ -237,7 +237,7 @@ var dataObject = {
 	  "eyeColor": "blue",
 	  "occupation": "assistant",
 	  "parents": [693243224, 888201200],
-	  "currentSpouse": 313997561 
+	  "currentSpouse": 313997561
 	},
 	"313997561" : {
 	  "firstName": "Ellen",
@@ -249,7 +249,7 @@ var dataObject = {
 	  "eyeColor": "blue",
 	  "occupation": "doctor",
 	  "parents": [],
-	  "currentSpouse": 313207561 
+	  "currentSpouse": 313207561
 	},
 	"313998000" : {
 	  "firstName": "Joey",
@@ -261,7 +261,7 @@ var dataObject = {
 	  "eyeColor": "blue",
 	  "occupation": "doctor",
 	  "parents": [313207561,313997561],
-	  "currentSpouse": null 
+	  "currentSpouse": null
 	}
 };
 
@@ -290,7 +290,7 @@ function initSearch(){
 }
 
 function responder(results){
-	// results may be a list of strings, an object, or a single string. 
+	// results may be a list of strings, an object, or a single string.
 	alert(results);
 }
 
