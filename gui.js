@@ -26,7 +26,12 @@ function initSearchByName(people){
             }
         });
 		displayResults(filteredSearch);
-		promptAnotherSearch(filteredSearch);
+		if(filteredSearch.length === 1){
+		    promptForDescendantsSearch(filteredSearch[0],data);
+        }
+        else {
+            promptAnotherSearch(filteredSearch);
+        }
     }
     else{
     	alert("Please enter a valid name..");
@@ -79,7 +84,12 @@ function initSearchByHeight(people){
             }
         });
         displayResults(filteredSearch);
-        promptAnotherSearch(filteredSearch);
+        if(filteredSearch.length === 1){
+            promptForDescendantsSearch(filteredSearch[0],data);
+        }
+        else {
+            promptAnotherSearch(filteredSearch);
+        }
     }
     else{
     	alert("Please enter a valid height..");
@@ -99,7 +109,12 @@ function initSearchByWeight(people){
             }
         });
         displayResults(filteredSearch);
-        promptAnotherSearch(filteredSearch);
+        if(filteredSearch.length === 1){
+            promptForDescendantsSearch(filteredSearch[0],data);
+        }
+        else {
+            promptAnotherSearch(filteredSearch);
+        }
     }
     else{
     	alert("Please enter a valid weight..");
@@ -119,7 +134,12 @@ function initSearchByEyeColor(people){
             }
         });
         displayResults(filteredSearch);
-        promptAnotherSearch(filteredSearch);
+        if(filteredSearch.length === 1){
+            promptForDescendantsSearch(filteredSearch[0],data);
+        }
+        else {
+            promptAnotherSearch(filteredSearch);
+        }
     }
     else{
     	alert("Please enter a valid eye color..");
@@ -144,7 +164,12 @@ function initSearchByAge(people){
                 }
             });
             displayResults(filteredSearch);
-            promptAnotherSearch(filteredSearch);
+            if(filteredSearch.length === 1){
+                promptForDescendantsSearch(filteredSearch[0],data);
+            }
+            else {
+                promptAnotherSearch(filteredSearch);
+            }
         }
         else{
         	alert("Please enter a valid age..");
@@ -177,7 +202,12 @@ function initSearchByOccupation(people){
                 }
             });
             displayResults(filteredSearch);
-            promptAnotherSearch(filteredSearch);
+            if(filteredSearch.length === 1){
+                promptForDescendantsSearch(filteredSearch[0],data);
+            }
+            else {
+                promptAnotherSearch(filteredSearch);
+            }
         }
         else{
         	alert("Please enter a valid occupation");
@@ -210,7 +240,12 @@ function initSearchByGender(people){
                 }
             });
             displayResults(filteredSearch);
-            promptAnotherSearch(filteredSearch);
+            if(filteredSearch.length === 1){
+                promptForDescendantsSearch(filteredSearch[0],data);
+            }
+            else {
+                promptAnotherSearch(filteredSearch);
+            }
         }
         else{
         	alert("Please enter a valid gender..");
@@ -261,21 +296,40 @@ function promptAnotherSearch(people){
         promptAnotherSearch(people);
     }
 }
-function isNumeric() {
-	;
+function promptForDescendantsSearch(person, people){
+    var input = prompt("Would you like to find the descendants of this person?");
+    var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
+    var noOptions = ["no", "No", "NO", "n", "N"];
+
+    if(yesOptions.includes(input)){
+        var foundDescendants = getDescendants(person, people);
+        displayResults(foundDescendants);
+    }
+    else if(noOptions.includes(input)){
+        alert("Okay, have a nice day!");
+    }
+    else{
+        alert("Please enter a valid response..");
+        promptForDescendantsSearch(person,people);
+    }
 }
-function getHeight(){
-	;
+function getDescendants(person, people,counter=-1, descList=[]){
+    var counterClone = counter;
+
+    if(counterClone < descList.length) {
+        var descendants = people.filter(function (el) {
+            if (el.parents == person.id) {
+                return true
+            }
+            else {
+                return false
+            }
+        });
+        descList.push(...descendants);
+    }
+    else{
+        return descList;
+    }
+    counterClone++;
+    getDescendants(descList[counterClone],people,counterClone,descList);
 }
-function getWeight(){
-	;
-}
-function getEye(){
-	;
-}
-function getOccupation(){
-	;
-}
-//function getDescendants(person, people, descList=[]){
-	//;
-//}
