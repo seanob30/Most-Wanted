@@ -15,11 +15,163 @@ function initSearch(people){
     }
 }
 function initSearchBySpecificCharacteristics(people){
-    var input = prompt("Enter the characteristics you would wish to search by, each in one word and separated by a comma! (THE OPTIONS ARE: firstname, lastname, gender, age, height, weight, eyecolor & occupation");
-    var searchCriteria = input.split(",");
+    var input = prompt("Enter the characteristics you would wish to search by, each in one word and separated by a comma! (THE OPTIONS ARE: age, range (of ages), height, weight, eyecolor & occupation");
+    var lowercaseInput = input.toLowerCase();
+    var searchCriteria = lowercaseInput.replace(" ", "");
 
-    for(var i = 0; i < searchCriteria.length; i++){
+    var filteredSearch = tailorSearchPrompts(people, searchCriteria);
+    displayResults(filteredSearch);
+    if(filteredSearch.length === 1){
+        promptForDescendantsSearch(filteredSearch[0],data);
+        promptForImmediateFamilySearch(filteredSearch[0],data);
+        promptForNextOfKinSearch(filteredSearch[0],data);
+    }
+}
+function tailorSearchPrompts(people, search){
+    var filteredSearch = [];
 
+    if(search.includes("age")){
+        var ageResults = initSearchByAgeSpecifics(people);
+        filteredSearch.push(...ageResults);
+    }
+    if(search.includes("range")){
+        var ageRangeResults = initSearchByAgeRangeSpecifics(people);
+        filteredSearch.push(...ageRangeResults);
+    }
+    if(search.includes("height")){
+        var heightResults = initSearchByHeightSpecifics(people);
+        filteredSearch.push(...heightResults);
+    }
+    if(search.includes("weight")){
+        var weightResults = initSearchByWeightSpecifics(people);
+        filteredSearch.push(...weightResults);
+    }
+    if(search.includes("eyecolor")){
+        var eyeColorResults = initSearchByEyeColorSpecifics(people);
+        filteredSearch.push(...eyeColorResults);
+    }
+    if(search.includes("occupation")){
+        var occupationResults = initSearchByOccupationSpecifics(people);
+        filteredSearch.push(...occupationResults);
+    }
+    return filteredSearch;
+}
+function initSearchByAgeSpecifics(people){
+    var input = prompt("Please enter a specific age to search by");
+
+    if(isNaN(input) === false) {
+        var filteredSearch = people.filter(function (el) {
+            if (getAge(el.dob) == input) {
+                return true
+            }
+            else {
+                return false
+            }
+        });
+        return filteredSearch;
+    }
+    else{
+        alert("Please enter a valid age..");
+        initSearchByAgeSpecifics(people);
+    }
+}
+function initSearchByAgeRangeSpecifics(people){
+    var input = prompt("Please enter the start of the age range..");
+    var input2 = prompt("Please enter the end of the age range");
+
+    if(isNaN(input) === false && isNaN(input2) === false) {
+        var filteredSearch = people.filter(function (el) {
+            if (getAge(el.dob) >= input && getAge(el.dob) <= input2) {
+                return true
+            }
+            else {
+                return false
+            }
+        });
+        return filteredSearch;
+    }
+    else{
+        alert("Please enter a valid age range..");
+        initSearchByAgeRangeSpecifics(people);
+    }
+}
+function initSearchByHeightSpecifics(people){
+    var input = prompt("Please enter a height in inches to search by");
+
+    if(isNaN(input) === false) {
+        var filteredSearch = people.filter(function (el) {
+            if (el.height == input) {
+                return true
+            }
+            else {
+                return false
+            }
+        });
+        return filteredSearch;
+    }
+    else{
+        alert("Please enter a valid height..");
+        initSearchByHeightSpecifics(people);
+    }
+}
+function initSearchByWeightSpecifics(people){
+    var input = prompt("Please enter a weight to search by (in this format: 150lbs)");
+    var inputLowered = input.toLowerCase();
+    var inputTrimmed = inputLowered.split(/[l]/)[0];
+    var finalInput = parseInt(inputTrimmed);
+
+    if(isNaN(finalInput) === false) {
+        var filteredSearch = people.filter(function (el) {
+            if (el.weight == finalInput) {
+                return true
+            }
+            else {
+                return false
+            }
+        });
+        return filteredSearch;
+    }
+    else{
+        alert("Please enter a valid weight in the correct format..");
+        initSearchByWeightSpecifics(people);
+    }
+}
+function initSearchByOccupationSpecifics(people){
+    var input = prompt("Please enter an occupation to search by");
+
+    if(isNaN(input) === true) {
+        var filteredSearch = people.filter(function (el) {
+            if (el.occupation == input.toLowerCase()) {
+                return true
+            }
+            else {
+                return false
+            }
+        });
+        return filteredSearch;
+    }
+    else{
+        alert("Please enter a valid occupation..");
+        initSearchByOccupationSpecifics(people);
+    }
+}
+function initSearchByEyeColorSpecifics(people){
+    var input = prompt("Please enter an eye color to search by");
+
+    if(isNaN(input) === true) {
+        var filteredSearch = people.filter(function (el) {
+            if (el.eyeColor == input.toLowerCase()) {
+                return true
+            }
+            else {
+                return false
+            }
+        });
+        return filteredSearch;
+    }
+    else{
+        alert("Please enter a valid eye color..");
+        initSearchByEyeColorSpecifics(people);
     }
 }
 function promptForSearchByName(people) {
