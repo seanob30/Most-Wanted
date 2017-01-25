@@ -1,4 +1,28 @@
-function initSearch(people) {
+function initSearch(people){
+    var input = prompt("Do you know the characteristics you would like to search by?");
+    var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
+    var noOptions = ["no", "No", "NO", "n", "N"];
+
+    if(yesOptions.includes(input)){
+        initSearchBySpecificCharacteristics(people);
+    }
+    else if(noOptions.includes(input)){
+        promptForSearchByName(people);
+    }
+    else{
+        alert("Please enter a valid response..");
+        initSearch(people);
+    }
+}
+function initSearchBySpecificCharacteristics(people){
+    var input = prompt("Enter the characteristics you would wish to search by, each in one word and separated by a comma! (THE OPTIONS ARE: firstname, lastname, gender, age, height, weight, eyecolor & occupation");
+    var searchCriteria = input.split(",");
+
+    for(var i = 0; i < searchCriteria.length; i++){
+
+    }
+}
+function promptForSearchByName(people) {
     var input = prompt("Do you know the name of the person you are searching for?");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
@@ -28,6 +52,8 @@ function initSearchByName(people){
 		displayResults(filteredSearch);
 		if(filteredSearch.length === 1){
 		    promptForDescendantsSearch(filteredSearch[0],data);
+		    promptForImmediateFamilySearch(filteredSearch[0],data);
+		    promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
             promptAnotherSearch(filteredSearch);
@@ -302,8 +328,8 @@ function promptForDescendantsSearch(person, people){
     var noOptions = ["no", "No", "NO", "n", "N"];
 
     if(yesOptions.includes(input)){
-        var foundDescendants = getDescendants(person, people);
-        displayResults(foundDescendants);
+        var descendants = getDescendants(person, people);
+        displayResults(descendants);
     }
     else if(noOptions.includes(input)){
         alert("Okay, have a nice day!");
@@ -314,22 +340,200 @@ function promptForDescendantsSearch(person, people){
     }
 }
 function getDescendants(person, people,counter=-1, descList=[]){
-    var counterClone = counter;
-
-    if(counterClone < descList.length) {
+    if(person != undefined) {
         var descendants = people.filter(function (el) {
-            if (el.parents == person.id) {
-                return true
-            }
-            else {
-                return false
-            }
+            return el.parents.includes(person.id);
         });
         descList.push(...descendants);
+
+        counter++;
+        getDescendants(descList[counter],people,counter,descList);
+    }
+    return descList;
+}
+function promptForImmediateFamilySearch(person, people){
+    var input = prompt("Would you like to find the immediate family of this person?");
+    var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
+    var noOptions = ["no", "No", "NO", "n", "N"];
+
+    if(yesOptions.includes(input)){
+        var family = getImmediateFamily(person, people);
+        displayResults(family);
+    }
+    else if(noOptions.includes(input)){
+        alert("Okay, have a nice day!");
     }
     else{
-        return descList;
+        alert("Please enter a valid response..");
+        promptForImmediateFamilySearch(person,people);
     }
-    counterClone++;
-    getDescendants(descList[counterClone],people,counterClone,descList);
+}
+function getImmediateFamily(person, people){
+    var parents = getParents(person, people);
+    var siblings = getSiblings(person, people);
+    var spouse = getSpouse(person, people);
+    var children = getChildren(person, people);
+    var allImmediateFamily = [];
+
+    allImmediateFamily.push(...parents);
+    allImmediateFamily.push(...siblings);
+    allImmediateFamily.push(...spouse);
+    allImmediateFamily.push(...children);
+
+    return allImmediateFamily;
+}
+function promptForNextOfKinSearch(person, people){
+    var input = prompt("Would you like to find the next of kin for this person?");
+    var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
+    var noOptions = ["no", "No", "NO", "n", "N"];
+
+    if(yesOptions.includes(input)){
+        var nextOfKin = getImmediateFamily(person, people);
+        displayResults(nextOfKin);
+    }
+    else if(noOptions.includes(input)){
+        alert("Okay, have a nice day!");
+    }
+    else{
+        alert("Please enter a valid response..");
+        promptForNextOfKinSearch(person,people);
+    }
+}
+function getNextOfKinSearch(person,people){
+    var spouse = getSpouse(person, people);
+    var childrenList = getChildren(person, people);
+    var parentsList = getParents(person, people);
+    var siblingsList = getSiblings(person, people);
+    var grandChildrenList = getGrandChildren(person, people);
+    var grandParentsList = getGrandParents(person, people);
+    var nieceNephewList = getNiecesAndNephews(person, people);
+    var auntUncleList = getAuntsAndUncles(person, people);
+    var greatGrandChildrenList = getGreatGrandChildren(person, people);
+    var greatGrandParentsList = getGreatGrandParents(person, people);
+    var nextOfKinList = [];
+
+    nextOfKin.push(...spouse);
+    nextOfKin.push(...childrenList);
+    nextOfKin.push(...parentsList);
+    nextOfKin.push(...siblingsList);
+    nextOfKin.push(...grandChildrenList);
+    nextOfKin.push(...grandParentsList);
+    nextOfKin.push(...nieceNephewList);
+    nextOfKin.push(...auntUncleList);
+    nextOfKin.push(...greatGrandChildrenList);
+    nextOfKin.push(...greatGrandParentsList);
+
+    return nextOfKinList;
+}
+function getParents(person, people){
+    var parentList = people.filter(function (el) {
+        return person.parents.includes(el.id);
+    });
+    parentList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return parentList;
+}
+function getSiblings(person, people){
+    var siblingList = people.filter(function (el) {
+        return el.parents.includes(person.parents);
+    });
+    siblingList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return siblingList;
+}
+function getSpouse(person, people){
+    var spouse = people.filter(function (el) {
+        return el.currentSpouse == person.id;
+    });
+    return spouse;
+}
+function getChildren(person, people){
+    var childrenList = people.filter(function (el) {
+        return el.parents.includes(person.id);
+    });
+    childrenList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return childrenList;
+}
+function getGrandChildren(person, people){
+    var children = getChildren(person, people);
+    var grandChildrenList = [];
+
+    for(var child in children){
+        var grandChild = getChildren(child, people);
+        grandChildrenList.push(...grandChild);
+    }
+    grandChildrenList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return grandChildrenList;
+
+}
+function getGrandParents(person, people){
+    var parents = getParents(person, people);
+    var grandParentsList = [];
+
+    for(var parent in parents){
+        var grandParent = getParents(parent, people);
+        grandParentsList.push(...grandParent);
+    }
+    grandParentsList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return grandParentsList;
+}
+function getNiecesAndNephews(person, people){
+    var siblings = getSiblings(person, people);
+    var niecesAndNephewsList = [];
+
+    for(var sibling in siblings){
+        var nieceAndNephew = getChildren(sibling, people);
+        niecesAndNephewsList.push(...nieceAndNephew);
+    }
+    niecesAndNephewsList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return niecesAndNephewsList;
+}
+function getAuntsAndUncles(person, people){
+    var parents = getParents(person, people);
+    var auntsAndUnclesList = [];
+
+    for(var parent in parents){
+        var auntAndUncle = getSiblings(parent, people);
+        auntsAndUnclesList.push(...auntAndUncle);
+    }
+    auntsAndUnclesList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return auntsAndUnclesList;
+}
+function getGreatGrandChildren(person, people){
+    var grandChildren = getGrandChildren(person, people);
+    var greatGrandChildrenList = [];
+
+    for(var grandChild in grandChildren){
+        var greatGrandChild = getChildren(grandChild, people);
+        greatGrandChildrenList.push(...greatGrandChild);
+    }
+    greatGrandChildrenList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return greatGrandChildrenList;
+}
+function getGreatGrandParents(person, people){
+    var grandParents = getGrandParents(person, people);
+    var greatGrandParentsList = [];
+
+    for(var grandParent in grandParents){
+        var greatGrandParent = getParents(grandParent, people);
+        greatGrandParentsList.push(...greatGrandParent);
+    }
+    greatGrandParentsList.sort(function (a, b){
+        return b.value - a.value;
+    });
+    return greatGrandParentsList;
 }
