@@ -22,6 +22,7 @@ function initSearchBySpecificCharacteristics(people){
     var filteredSearch = tailorSearchPrompts(people, searchCriteria);
     displayResults(filteredSearch);
     if(filteredSearch.length === 1){
+        displaySoloResults(filteredSearch[0]);
         promptForDescendantsSearch(filteredSearch[0],data);
         promptForImmediateFamilySearch(filteredSearch[0],data);
         promptForNextOfKinSearch(filteredSearch[0],data);
@@ -203,6 +204,7 @@ function initSearchByName(people){
         });
 		displayResults(filteredSearch);
 		if(filteredSearch.length === 1){
+            displaySoloResults(filteredSearch[0]);
 		    promptForDescendantsSearch(filteredSearch[0],data);
 		    promptForImmediateFamilySearch(filteredSearch[0],data);
 		    promptForNextOfKinSearch(filteredSearch[0],data);
@@ -263,7 +265,10 @@ function initSearchByHeight(people){
         });
         displayResults(filteredSearch);
         if(filteredSearch.length === 1){
+            displaySoloResults(filteredSearch[0]);
             promptForDescendantsSearch(filteredSearch[0],data);
+            promptForImmediateFamilySearch(filteredSearch[0],data);
+            promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
             promptAnotherSearch(filteredSearch);
@@ -288,7 +293,10 @@ function initSearchByWeight(people){
         });
         displayResults(filteredSearch);
         if(filteredSearch.length === 1){
+            displaySoloResults(filteredSearch[0]);
             promptForDescendantsSearch(filteredSearch[0],data);
+            promptForImmediateFamilySearch(filteredSearch[0],data);
+            promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
             promptAnotherSearch(filteredSearch);
@@ -313,7 +321,10 @@ function initSearchByEyeColor(people){
         });
         displayResults(filteredSearch);
         if(filteredSearch.length === 1){
+            displaySoloResults(filteredSearch[0]);
             promptForDescendantsSearch(filteredSearch[0],data);
+            promptForImmediateFamilySearch(filteredSearch[0],data);
+            promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
             promptAnotherSearch(filteredSearch);
@@ -343,7 +354,10 @@ function initSearchByAge(people){
             });
             displayResults(filteredSearch);
             if(filteredSearch.length === 1){
+                displaySoloResults(filteredSearch[0]);
                 promptForDescendantsSearch(filteredSearch[0],data);
+                promptForImmediateFamilySearch(filteredSearch[0],data);
+                promptForNextOfKinSearch(filteredSearch[0],data);
             }
             else {
                 promptAnotherSearch(filteredSearch);
@@ -381,7 +395,10 @@ function initSearchByOccupation(people){
             });
             displayResults(filteredSearch);
             if(filteredSearch.length === 1){
+                displaySoloResults(filteredSearch[0]);
                 promptForDescendantsSearch(filteredSearch[0],data);
+                promptForImmediateFamilySearch(filteredSearch[0],data);
+                promptForNextOfKinSearch(filteredSearch[0],data);
             }
             else {
                 promptAnotherSearch(filteredSearch);
@@ -419,7 +436,10 @@ function initSearchByGender(people){
             });
             displayResults(filteredSearch);
             if(filteredSearch.length === 1){
+                displaySoloResults(filteredSearch[0]);
                 promptForDescendantsSearch(filteredSearch[0],data);
+                promptForImmediateFamilySearch(filteredSearch[0],data);
+                promptForNextOfKinSearch(filteredSearch[0],data);
             }
             else {
                 promptAnotherSearch(filteredSearch);
@@ -447,6 +467,10 @@ function displayResults(people){
 	var joinedNames = nameOnly.join(", ");
     alert(joinedNames);
 }
+function displaySoloResults(person){
+
+    alert(person.firstName + " " + person.lastName + ", " + "GENDER: " + person.gender + ", " + "AGE: " + getAge(person.dob) + ", " + "HEIGHT: " + convertInchesToFootInches(person.height) + ", " + "WEIGHT: " + person.weight + "lbs, " + "EYE COLOR: " + person.eyeColor + ", " + "OCCUPATION: " + person.occupation);
+}
 function getAge(dateString){
     var today = new Date();
     var birthDate = new Date(dateString);
@@ -457,6 +481,10 @@ function getAge(dateString){
         age--;
     }
     return age;
+}
+function convertInchesToFootInches(height){
+    var convertedHeight = ((height/12).toString().split(/[.]/)[0]) + "'" + (height % 12) + "''";
+    return convertedHeight;
 }
 function promptAnotherSearch(people){
     var input = prompt("Would you like to narrow your results even more?!");
@@ -552,28 +580,18 @@ function promptForNextOfKinSearch(person, people){
     }
 }
 function getNextOfKinSearch(person,people){
-    var spouse = getSpouse(person, people);
-    var childrenList = getChildren(person, people);
-    var parentsList = getParents(person, people);
-    var siblingsList = getSiblings(person, people);
-    var grandChildrenList = getGrandChildren(person, people);
-    var grandParentsList = getGrandParents(person, people);
-    var nieceNephewList = getNiecesAndNephews(person, people);
-    var auntUncleList = getAuntsAndUncles(person, people);
-    var greatGrandChildrenList = getGreatGrandChildren(person, people);
-    var greatGrandParentsList = getGreatGrandParents(person, people);
     var nextOfKinList = [];
 
-    nextOfKin.push(...spouse);
-    nextOfKin.push(...childrenList);
-    nextOfKin.push(...parentsList);
-    nextOfKin.push(...siblingsList);
-    nextOfKin.push(...grandChildrenList);
-    nextOfKin.push(...grandParentsList);
-    nextOfKin.push(...nieceNephewList);
-    nextOfKin.push(...auntUncleList);
-    nextOfKin.push(...greatGrandChildrenList);
-    nextOfKin.push(...greatGrandParentsList);
+    nextOfKin.push(...getSpouse(person, people));
+    nextOfKin.push(...getChildren(person, people));
+    nextOfKin.push(...getParents(person, people));
+    nextOfKin.push(...getSiblings(person, people));
+    nextOfKin.push(...getGrandChildren(person, people));
+    nextOfKin.push(...getGrandParents(person, people));
+    nextOfKin.push(...getNiecesAndNephews(person, people));
+    nextOfKin.push(...getAuntsAndUncles(person, people));
+    nextOfKin.push(...getGreatGrandChildren(person, people));
+    nextOfKin.push(...getGreatGrandParents(person, people));
 
     return nextOfKinList;
 }
