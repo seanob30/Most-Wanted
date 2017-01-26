@@ -97,11 +97,11 @@ function initSearchByAgeRangeSpecifics(people){
     }
 }
 function initSearchByHeightSpecifics(people){
-    var input = prompt("Please enter a height in inches to search by");
+    var input = prompt("Please enter a height to search by in this format: #'#''");
 
-    if(isNaN(input) === false) {
+    if(isNaN(input) === true) {
         var filteredSearch = people.filter(function (el) {
-            if (el.height == input) {
+            if (convertInchesToFootInches(el.height) == input) {
                 return true
             }
             else {
