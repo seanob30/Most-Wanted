@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23a30a0b-37a2-41e2-9bb9-fa337f6e05f6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui.js" afterPath="$PROJECT_DIR$/gui.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,8 +23,8 @@
       <file leaf-file-name="gui.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gui.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27646">
-              <caret line="601" column="35" lean-forward="true" selection-start-line="601" selection-start-column="35" selection-end-line="601" selection-end-column="35" />
+            <state relative-caret-position="11041">
+              <caret line="625" column="35" lean-forward="false" selection-start-line="625" selection-start-column="35" selection-end-line="625" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -80,8 +78,8 @@
         <option value="$PROJECT_DIR$/stylesheet.css" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/../../Example/package.json" />
-        <option value="$PROJECT_DIR$/gui.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/gui.js" />
       </list>
     </option>
   </component>
@@ -237,12 +235,12 @@
       <workItem from="1485460463720" duration="1990000" />
       <workItem from="1485468313702" duration="2135000" />
       <workItem from="1485473562083" duration="1307000" />
-      <workItem from="1485524944211" duration="8824000" />
+      <workItem from="1485524944211" duration="12263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66788000" />
+    <option name="totallyTimeSpent" value="70227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="60" width="3232" height="1756" extended-state="6" />
@@ -598,8 +596,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27646">
-          <caret line="601" column="35" lean-forward="true" selection-start-line="601" selection-start-column="35" selection-end-line="601" selection-end-column="35" />
+        <state relative-caret-position="11041">
+          <caret line="625" column="35" lean-forward="false" selection-start-line="625" selection-start-column="35" selection-end-line="625" selection-end-column="35" />
           <folding />
         </state>
       </provider>

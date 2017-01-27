@@ -570,7 +570,7 @@ function promptForNextOfKinSearch(person, people){
 
     if(yesOptions.includes(input)){
         var nextOfKin = getNextOfKinSearch(person, people);
-        if(nextOfKin.length > 0) {
+        if(nextOfKin.length != undefined) {
             displaySoloResults(nextOfKin[0]);
         }
         else{
@@ -590,31 +590,40 @@ function getNextOfKinSearch(person,people){
 
     nextOfKinList.push(getSpouse(person, people)[0]);
 
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getChildren(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getParents(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getSiblings(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getGrandChildren(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getGrandParents(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getNiecesAndNephews(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getAuntsAndUncles(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getGreatGrandChildren(person, people)[0]);
     }
-    if(nextOfKinList.length == 0) {
+    if(nextOfKinList[0] == undefined) {
+        nextOfKinList.splice(0, 1);
         nextOfKinList.push(getGreatGrandParents(person, people)[0]);
     }
 
