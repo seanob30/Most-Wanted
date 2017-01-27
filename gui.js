@@ -20,13 +20,16 @@ function initSearchBySpecificCharacteristics(people){
     var searchCriteria = lowercaseInput.replace(" ", "");
 
     var filteredSearch = tailorSearchPrompts(people, searchCriteria);
-    displayResults(filteredSearch);
     if(filteredSearch.length === 1){
         displaySoloResults(filteredSearch[0]);
         promptForDescendantsSearch(filteredSearch[0],data);
         promptForImmediateFamilySearch(filteredSearch[0],data);
         promptForNextOfKinSearch(filteredSearch[0],data);
     }
+    else {
+            displayResults(filteredSearch);
+            promptAnotherSearch(filteredSearch);
+        }
 }
 function tailorSearchPrompts(people, search){
     var filteredSearch = [];
