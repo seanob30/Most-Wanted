@@ -1,5 +1,5 @@
 function initSearch(people){
-    var input = prompt("Do you know the characteristics you would like to search by?");
+    var input = prompt("Welcome to the Most Wanted Search Tool!\n\nDo you know the characteristics you would like to search by? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
@@ -10,12 +10,12 @@ function initSearch(people){
         promptForSearchByName(people);
     }
     else{
-        alert("Please enter a valid response..");
+        alert("Please enter a valid response..\n");
         initSearch(people);
     }
 }
 function initSearchBySpecificCharacteristics(people){
-    var input = prompt("Enter the characteristics you would wish to search by, each in one word and separated by a comma! (THE OPTIONS ARE: age, range (of ages), height, weight, eyecolor & occupation");
+    var input = prompt("Enter the characteristics you would wish to search by, each in one word and separated by a comma! (THE OPTIONS ARE: age, range (of ages), height, weight, eyecolor & occupation.\n");
     var lowercaseInput = input.toLowerCase();
     var searchCriteria = lowercaseInput.replace(" ", "");
 
@@ -58,7 +58,7 @@ function tailorSearchPrompts(people, search){
     return filteredSearch;
 }
 function initSearchByAgeSpecifics(people){
-    var input = prompt("Please enter a specific age to search by");
+    var input = prompt("Please enter a specific age to search by (in this format: ##)\n");
 
     if(isNaN(input) === false) {
         var filteredSearch = people.filter(function (el) {
@@ -72,13 +72,13 @@ function initSearchByAgeSpecifics(people){
         return filteredSearch;
     }
     else{
-        alert("Please enter a valid age..");
+        alert("Please enter a valid age..\n");
         initSearchByAgeSpecifics(people);
     }
 }
 function initSearchByAgeRangeSpecifics(people){
-    var input = prompt("Please enter the start of the age range..");
-    var input2 = prompt("Please enter the end of the age range");
+    var input = prompt("Please enter the start of the age range (in this format: ##)\n");
+    var input2 = prompt("Please enter the end of the age range (in this format: ##)\n");
 
     if(isNaN(input) === false && isNaN(input2) === false) {
         var filteredSearch = people.filter(function (el) {
@@ -92,12 +92,12 @@ function initSearchByAgeRangeSpecifics(people){
         return filteredSearch;
     }
     else{
-        alert("Please enter a valid age range..");
+        alert("Please enter a valid age range..\n");
         initSearchByAgeRangeSpecifics(people);
     }
 }
 function initSearchByHeightSpecifics(people){
-    var input = prompt("Please enter a height to search by in this format: #'#''");
+    var input = prompt("Please enter a height to search by (in this format: #'#'')\n");
 
     if(isNaN(input) === true) {
         var filteredSearch = people.filter(function (el) {
@@ -111,12 +111,12 @@ function initSearchByHeightSpecifics(people){
         return filteredSearch;
     }
     else{
-        alert("Please enter a valid height..");
+        alert("Please enter a valid height..\n");
         initSearchByHeightSpecifics(people);
     }
 }
 function initSearchByWeightSpecifics(people){
-    var input = prompt("Please enter a weight to search by (in this format: 150lbs)");
+    var input = prompt("Please enter a weight to search by (in this format: 150lbs)\n");
     var inputLowered = input.toLowerCase();
     var inputTrimmed = inputLowered.split(/[l]/)[0];
     var finalInput = parseInt(inputTrimmed);
@@ -133,12 +133,12 @@ function initSearchByWeightSpecifics(people){
         return filteredSearch;
     }
     else{
-        alert("Please enter a valid weight in the correct format..");
+        alert("Please enter a valid weight in the correct format..\n");
         initSearchByWeightSpecifics(people);
     }
 }
 function initSearchByOccupationSpecifics(people){
-    var input = prompt("Please enter an occupation to search by");
+    var input = prompt("Please enter an occupation to search by.\n");
 
     if(isNaN(input) === true) {
         var filteredSearch = people.filter(function (el) {
@@ -152,12 +152,12 @@ function initSearchByOccupationSpecifics(people){
         return filteredSearch;
     }
     else{
-        alert("Please enter a valid occupation..");
+        alert("Please enter a valid occupation..\n");
         initSearchByOccupationSpecifics(people);
     }
 }
 function initSearchByEyeColorSpecifics(people){
-    var input = prompt("Please enter an eye color to search by");
+    var input = prompt("Please enter an eye color to search by.\n");
 
     if(isNaN(input) === true) {
         var filteredSearch = people.filter(function (el) {
@@ -171,12 +171,12 @@ function initSearchByEyeColorSpecifics(people){
         return filteredSearch;
     }
     else{
-        alert("Please enter a valid eye color..");
+        alert("Please enter a valid eye color..\n");
         initSearchByEyeColorSpecifics(people);
     }
 }
 function promptForSearchByName(people) {
-    var input = prompt("Do you know the name of the person you are searching for?");
+    var input = prompt("Do you know the name of the person you are searching for? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
@@ -187,12 +187,12 @@ function promptForSearchByName(people) {
     	initChooseAlternateSearchOptions(people)
 	}
 	else{
-		alert("Please enter a valid response..");
-		initSearch(people);
+		alert("Please enter a valid response..\n");
+		promptForSearchByName(people);
 	}
 }
 function initSearchByName(people){
-    var input = prompt("Please enter a first or last name");
+    var input = prompt("Please enter a first and/or last name.\n");
     if(isNaN(input) === true) {
         var filteredSearch = people.filter(function (el) {
             if (el.firstName.toLowerCase() == input.toLowerCase() || el.lastName.toLowerCase() == input.toLowerCase()) {
@@ -202,7 +202,6 @@ function initSearchByName(people){
                 return false
             }
         });
-		displayResults(filteredSearch);
 		if(filteredSearch.length === 1){
             displaySoloResults(filteredSearch[0]);
 		    promptForDescendantsSearch(filteredSearch[0],data);
@@ -210,16 +209,17 @@ function initSearchByName(people){
 		    promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
+            displayResults(filteredSearch);
             promptAnotherSearch(filteredSearch);
         }
     }
     else{
-    	alert("Please enter a valid name..");
+    	alert("Please enter a valid name..\n");
     	initSearchByName(people)
 	}
 }
 function initChooseAlternateSearchOptions(people){
-	var input = prompt("Do you know the height, weight, or eye color of the person you are searching for?");
+	var input = prompt("Do you know the height, weight, or eye color of the person you are searching for? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
@@ -230,12 +230,12 @@ function initChooseAlternateSearchOptions(people){
     	initSearchByAge(people);
 	}
 	else{
-		alert("Please enter a valid response..");
+		alert("Please enter a valid response..\n");
 		initChooseAlternateSearchOptions(people);
 	}
 }
 function initSearchByPhysicalTraits(people){
-	var input = prompt("Which trait would you like to search by: height, weight or eye color?")
+	var input = prompt("Which trait would you like to search by: height, weight or eye color?\n");
 
 	if(input.toLowerCase() == "height"){
 		initSearchByHeight(people);
@@ -247,23 +247,22 @@ function initSearchByPhysicalTraits(people){
 		initSearchByEyeColor(people);
 	}
 	else{
-		alert("Please enter a valid response..");
+		alert("Please enter a valid response..\n");
 		initSearchByPhysicalTraits(people);
 	}
 }
 function initSearchByHeight(people){
-    var input = prompt("Please enter a height to search by");
+    var input = prompt("Please enter a height to search by (in this format: #'##'')\n");
 
-    if(isNaN(input) === false) {
+    if(isNaN(input) === true) {
         var filteredSearch = people.filter(function (el) {
-            if (el.height == input) {
+            if (convertInchesToFootInches(el.height) == input) {
                 return true
             }
             else {
                 return false
             }
         });
-        displayResults(filteredSearch);
         if(filteredSearch.length === 1){
             displaySoloResults(filteredSearch[0]);
             promptForDescendantsSearch(filteredSearch[0],data);
@@ -271,27 +270,30 @@ function initSearchByHeight(people){
             promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
+            displayResults(filteredSearch);
             promptAnotherSearch(filteredSearch);
         }
     }
     else{
-    	alert("Please enter a valid height..");
+    	alert("Please enter a valid height..\n");
     	initSearchByHeight(people);
 	}
 }
 function initSearchByWeight(people){
-    var input = prompt("Please enter a weight to search by");
+    var input = prompt("Please enter a weight to search by (in this format: 150lbs)\n");
+    var inputLowered = input.toLowerCase();
+    var inputTrimmed = inputLowered.split(/[l]/)[0];
+    var finalInput = parseInt(inputTrimmed);
 
-    if(isNan(input) === false) {
+    if(isNaN(finalInput) === false) {
         var filteredSearch = people.filter(function (el) {
-            if (el.weight == input) {
+            if (el.weight == finalInput) {
                 return true
             }
             else {
                 return false
             }
         });
-        displayResults(filteredSearch);
         if(filteredSearch.length === 1){
             displaySoloResults(filteredSearch[0]);
             promptForDescendantsSearch(filteredSearch[0],data);
@@ -299,16 +301,17 @@ function initSearchByWeight(people){
             promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
+            displayResults(filteredSearch);
             promptAnotherSearch(filteredSearch);
         }
     }
     else{
-    	alert("Please enter a valid weight..");
+    	alert("Please enter a valid weight..\n");
     	initSearchByWeight(people);
 	}
 }
 function initSearchByEyeColor(people){
-    var input = prompt("Please enter an eye color to search by");
+    var input = prompt("Please enter an eye color to search by.\n");
 
     if(isNaN(input) === true) {
         var filteredSearch = people.filter(function (el) {
@@ -319,7 +322,6 @@ function initSearchByEyeColor(people){
                 return false
             }
         });
-        displayResults(filteredSearch);
         if(filteredSearch.length === 1){
             displaySoloResults(filteredSearch[0]);
             promptForDescendantsSearch(filteredSearch[0],data);
@@ -327,21 +329,22 @@ function initSearchByEyeColor(people){
             promptForNextOfKinSearch(filteredSearch[0],data);
         }
         else {
+            displayResults(filteredSearch);
             promptAnotherSearch(filteredSearch);
         }
     }
     else{
-    	alert("Please enter a valid eye color..");
+    	alert("Please enter a valid eye color..\n");
     	initSearchByEyeColor(people);
 	}
 }
 function initSearchByAge(people){
-	var input = prompt("Do you know the age of the person you are searching for?");
+	var input = prompt("Do you know the age of the person you are searching for? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
     if(yesOptions.includes(input)){
-        var input = prompt("Please enter an age to search by");
+        var input = prompt("Please enter an age to search by (in this format: ##)\n");
 
         if(isNaN(input) === false) {
             var filteredSearch = people.filter(function (el) {
@@ -352,7 +355,6 @@ function initSearchByAge(people){
                     return false
                 }
             });
-            displayResults(filteredSearch);
             if(filteredSearch.length === 1){
                 displaySoloResults(filteredSearch[0]);
                 promptForDescendantsSearch(filteredSearch[0],data);
@@ -360,11 +362,12 @@ function initSearchByAge(people){
                 promptForNextOfKinSearch(filteredSearch[0],data);
             }
             else {
+                displayResults(filteredSearch);
                 promptAnotherSearch(filteredSearch);
             }
         }
         else{
-        	alert("Please enter a valid age..");
+        	alert("Please enter a valid age..\n");
         	initSearchByAge(people);
 		}
 	}
@@ -372,17 +375,17 @@ function initSearchByAge(people){
     	initSearchByOccupation(people);
 	}
 	else{
-		alert("Please enter a valid response..");
+		alert("Please enter a valid response..\n");
 		initSearchByAge(people);
 	}
 }
 function initSearchByOccupation(people){
-    var input = prompt("Do you know the occupation of the person you are searching for?");
+    var input = prompt("Do you know the occupation of the person you are searching for? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
     if(yesOptions.includes(input)){
-        var input = prompt("Please enter an occupation to search by");
+        var input = prompt("Please enter an occupation to search by.\n");
 
         if(isNaN(input) === true) {
             var filteredSearch = people.filter(function (el) {
@@ -393,7 +396,6 @@ function initSearchByOccupation(people){
                     return false
                 }
             });
-            displayResults(filteredSearch);
             if(filteredSearch.length === 1){
                 displaySoloResults(filteredSearch[0]);
                 promptForDescendantsSearch(filteredSearch[0],data);
@@ -401,11 +403,12 @@ function initSearchByOccupation(people){
                 promptForNextOfKinSearch(filteredSearch[0],data);
             }
             else {
+                displayResults(filteredSearch);
                 promptAnotherSearch(filteredSearch);
             }
         }
         else{
-        	alert("Please enter a valid occupation");
+        	alert("Please enter a valid occupation.\n");
         	initSearchByOccupation(people);
 		}
     }
@@ -413,17 +416,17 @@ function initSearchByOccupation(people){
         initSearchByGender(people);
     }
     else{
-        alert("Please enter a valid response..");
+        alert("Please enter a valid response..\n");
         initSearchByOccupation(people);
     }
 }
 function initSearchByGender(people){
-    var input = prompt("Do you at least know the gender of the person you are searching for?!?!");
+    var input = prompt("Do you at least know the gender of the person you are searching for?!?! (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
     if(yesOptions.includes(input)){
-        var input = prompt("Please enter a gender to search by");
+        var input = prompt("Please enter a gender to search by.\n");
 
         if(isNaN(input) === true) {
             var filteredSearch = people.filter(function (el) {
@@ -434,7 +437,6 @@ function initSearchByGender(people){
                     return false
                 }
             });
-            displayResults(filteredSearch);
             if(filteredSearch.length === 1){
                 displaySoloResults(filteredSearch[0]);
                 promptForDescendantsSearch(filteredSearch[0],data);
@@ -442,19 +444,20 @@ function initSearchByGender(people){
                 promptForNextOfKinSearch(filteredSearch[0],data);
             }
             else {
+                displayResults(filteredSearch);
                 promptAnotherSearch(filteredSearch);
             }
         }
         else{
-        	alert("Please enter a valid gender..");
+        	alert("Please enter a valid gender..\n");
         	initSearchByGender(people);
 		}
     }
     else if(noOptions.includes(input)){
-        alert("Well I guess you are SOL..");
+        alert("Well I guess you are SOL..\n");
     }
     else{
-        alert("Please enter a valid response..");
+        alert("Please enter a valid response..\n");
         initSearchByGender(people);
     }
 }
@@ -464,12 +467,12 @@ function displayResults(people){
 		var fullName = people[i].firstName + " " + people[i].lastName;
 		nameOnly.push(fullName);
 	}
-	var joinedNames = nameOnly.join(", ");
+	var joinedNames = nameOnly.join("\n");
     alert(joinedNames);
 }
 function displaySoloResults(person){
 
-    alert(person.firstName + " " + person.lastName + ", " + "GENDER: " + person.gender + ", " + "AGE: " + getAge(person.dob) + ", " + "HEIGHT: " + convertInchesToFootInches(person.height) + ", " + "WEIGHT: " + person.weight + "lbs, " + "EYE COLOR: " + person.eyeColor + ", " + "OCCUPATION: " + person.occupation);
+    alert(person.firstName + " " + person.lastName + "\n\n" + "GENDER: " + person.gender + "\n" + "AGE: " + getAge(person.dob) + "\n" + "HEIGHT: " + convertInchesToFootInches(person.height) + "\n" + "WEIGHT: " + person.weight + "lbs\n" + "EYE COLOR: " + person.eyeColor + "\n" + "OCCUPATION: " + person.occupation + "\n");
 }
 function getAge(dateString){
     var today = new Date();
@@ -487,7 +490,7 @@ function convertInchesToFootInches(height){
     return convertedHeight;
 }
 function promptAnotherSearch(people){
-    var input = prompt("Would you like to narrow your results even more?!");
+    var input = prompt("Would you like to narrow your results even more?! (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
@@ -495,15 +498,15 @@ function promptAnotherSearch(people){
         initSearch(people);
     }
     else if(noOptions.includes(input)){
-        alert("Okay have a nice day!");
+        alert("Okay have a nice day!\n");
     }
     else{
-        alert("Please enter a valid response..");
+        alert("Please enter a valid response..\n");
         promptAnotherSearch(people);
     }
 }
 function promptForDescendantsSearch(person, people){
-    var input = prompt("Would you like to find the descendants of this person?");
+    var input = prompt("Would you like to find the descendants of this person? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
@@ -512,10 +515,9 @@ function promptForDescendantsSearch(person, people){
         displayResults(descendants);
     }
     else if(noOptions.includes(input)){
-        alert("Okay, have a nice day!");
     }
     else{
-        alert("Please enter a valid response..");
+        alert("Please enter a valid response..\n");
         promptForDescendantsSearch(person,people);
     }
 }
@@ -532,7 +534,7 @@ function getDescendants(person, people,counter=-1, descList=[]){
     return descList;
 }
 function promptForImmediateFamilySearch(person, people){
-    var input = prompt("Would you like to find the immediate family of this person?");
+    var input = prompt("Would you like to find the immediate family of this person? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
@@ -541,10 +543,9 @@ function promptForImmediateFamilySearch(person, people){
         displayResults(family);
     }
     else if(noOptions.includes(input)){
-        alert("Okay, have a nice day!");
     }
     else{
-        alert("Please enter a valid response..");
+        alert("Please enter a valid response..\n");
         promptForImmediateFamilySearch(person,people);
     }
 }
@@ -563,35 +564,59 @@ function getImmediateFamily(person, people){
     return allImmediateFamily;
 }
 function promptForNextOfKinSearch(person, people){
-    var input = prompt("Would you like to find the next of kin for this person?");
+    var input = prompt("Would you like to find the next of kin for this person? (yes/no)\n");
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
     if(yesOptions.includes(input)){
-        var nextOfKin = getImmediateFamily(person, people);
-        displayResults(nextOfKin);
+        var nextOfKin = getNextOfKinSearch(person, people);
+        if(nextOfKin.length > 0) {
+            displaySoloResults(nextOfKin[0]);
+        }
+        else{
+            alert("Sorry, this person does not have a next of kin..\n");
+        }
     }
     else if(noOptions.includes(input)){
-        alert("Okay, have a nice day!");
+        alert("Okay, have a nice day!\n");
     }
     else{
-        alert("Please enter a valid response..");
+        alert("Please enter a valid response..\n");
         promptForNextOfKinSearch(person,people);
     }
 }
 function getNextOfKinSearch(person,people){
     var nextOfKinList = [];
 
-    nextOfKin.push(...getSpouse(person, people));
-    nextOfKin.push(...getChildren(person, people));
-    nextOfKin.push(...getParents(person, people));
-    nextOfKin.push(...getSiblings(person, people));
-    nextOfKin.push(...getGrandChildren(person, people));
-    nextOfKin.push(...getGrandParents(person, people));
-    nextOfKin.push(...getNiecesAndNephews(person, people));
-    nextOfKin.push(...getAuntsAndUncles(person, people));
-    nextOfKin.push(...getGreatGrandChildren(person, people));
-    nextOfKin.push(...getGreatGrandParents(person, people));
+    nextOfKinList.push(getSpouse(person, people)[0]);
+
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getChildren(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getParents(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getSiblings(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getGrandChildren(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getGrandParents(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getNiecesAndNephews(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getAuntsAndUncles(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getGreatGrandChildren(person, people)[0]);
+    }
+    if(nextOfKinList.length == 0) {
+        nextOfKinList.push(getGreatGrandParents(person, people)[0]);
+    }
 
     return nextOfKinList;
 }
