@@ -1,0 +1,25 @@
+{
+  "name": "mostwanted",
+  "version": "1.0.0",
+  "description": "\"Search tool for the country's most wanted\"",
+  "main": "gui.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanob30/starter-most-wanted.git"
+  },
+  "author": "seanob30",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seanob30/starter-most-wanted/issues"
+  },
+  "homepage": "https://github.com/seanob30/starter-most-wanted#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0"
+  }
+}

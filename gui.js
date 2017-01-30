@@ -1,5 +1,5 @@
 function initSearch(people){
-    var input = prompt("Welcome to the Most Wanted Search Tool!\n\nDo you know the characteristics you would like to search by? (yes/no)\n");
+    var input = displayPromptForInitSearch();
     var yesOptions = ["yes", "Yes", "YES", "y", "Y"];
     var noOptions = ["no", "No", "NO", "n", "N"];
 
@@ -13,6 +13,10 @@ function initSearch(people){
         alert("Please enter a valid response..\n");
         initSearch(people);
     }
+}
+function displayPromptForInitSearch(){
+    var input = prompt("Welcome to the Most Wanted Search Tool!\n\nDo you know the characteristics you would like to search by? (yes/no)\n");
+    return input;
 }
 function initSearchBySpecificCharacteristics(people){
     var input = prompt("Enter the characteristics you would wish to search by, each in one word and separated by a comma! (THE OPTIONS ARE: age, range (of ages), height, weight, eyecolor & occupation.\n");
@@ -35,147 +39,182 @@ function tailorSearchPrompts(people, search){
     var filteredSearch = [];
 
     if(search.includes("age")){
-        var ageResults = initSearchByAgeSpecifics(people);
+        var input = getSearchByAgeSpecificInput();
+        var ageResults = initSearchByAgeSpecifics(input, people);
         filteredSearch.push(...ageResults);
     }
     if(search.includes("range")){
-        var ageRangeResults = initSearchByAgeRangeSpecifics(people);
+        var input = getSearchByAgeRangeInput();
+        var input2 = getSearchByAgeRangeInput2();
+        var ageRangeResults = initSearchByAgeRangeSpecifics(input, input2, people);
         filteredSearch.push(...ageRangeResults);
     }
     if(search.includes("height")){
-        var heightResults = initSearchByHeightSpecifics(people);
+        var input = getSearchByHeightSpecificInput();
+        var heightResults = initSearchByHeightSpecifics(input, people);
         filteredSearch.push(...heightResults);
     }
     if(search.includes("weight")){
-        var weightResults = initSearchByWeightSpecifics(people);
+        var input = getSearchByWeightSpecificInput();
+        var weightResults = initSearchByWeightSpecifics(input, people);
         filteredSearch.push(...weightResults);
     }
     if(search.includes("eyecolor")){
-        var eyeColorResults = initSearchByEyeColorSpecifics(people);
+        var input = getSearchByEyeColorSpecificInput();
+        var eyeColorResults = initSearchByEyeColorSpecifics(input, people);
         filteredSearch.push(...eyeColorResults);
     }
     if(search.includes("occupation")){
-        var occupationResults = initSearchByOccupationSpecifics(people);
+        var input = getSearchByOccupationSpecificInput();
+        var occupationResults = initSearchByOccupationSpecifics(input, people);
         filteredSearch.push(...occupationResults);
     }
     return filteredSearch;
 }
-function initSearchByAgeSpecifics(people){
-    var input = prompt("Please enter a specific age to search by (in this format: ##)\n");
+function initSearchByAgeSpecifics(input, people){
 
-    if(isNaN(input) === false) {
-        var filteredSearch = people.filter(function (el) {
-            if (getAge(el.dob) == input) {
-                return true
-            }
-            else {
-                return false
-            }
-        });
-        return filteredSearch;
+    var filteredSearch = people.filter(function (el) {
+        if (getAge(el.dob) == input) {
+            return true
+        }
+        else {
+            return false
+        }
+    });
+    return filteredSearch;
+}
+function getSearchByAgeSpecificInput(){
+    var input = prompt("Please enter a specific age to search by (in this format: ##)\n");
+    if(isNaN(input) === false){
+        return input;
     }
     else{
         alert("Please enter a valid age..\n");
-        initSearchByAgeSpecifics(people);
+        getSearchByAgeSpecificInput();
     }
 }
-function initSearchByAgeRangeSpecifics(people){
+function initSearchByAgeRangeSpecifics(input, input2, people){
+    var filteredSearch = people.filter(function (el) {
+        if (getAge(el.dob) >= input && getAge(el.dob) <= input2) {
+            return true
+        }
+        else {
+            return false
+        }
+    });
+    return filteredSearch;
+}
+function getSearchByAgeRangeInput(){
     var input = prompt("Please enter the start of the age range (in this format: ##)\n");
-    var input2 = prompt("Please enter the end of the age range (in this format: ##)\n");
 
-    if(isNaN(input) === false && isNaN(input2) === false) {
-        var filteredSearch = people.filter(function (el) {
-            if (getAge(el.dob) >= input && getAge(el.dob) <= input2) {
-                return true
-            }
-            else {
-                return false
-            }
-        });
-        return filteredSearch;
+    if(isNaN(input) === false){
+        return input;
     }
     else{
-        alert("Please enter a valid age range..\n");
-        initSearchByAgeRangeSpecifics(people);
+        alert("Please enter a valid age..\n");
+        getSearchByAgeRangeInput();
     }
 }
-function initSearchByHeightSpecifics(people){
+function getSearchByAgeRangeInput2(){
+    var input2 = prompt("Please enter the end of the age range (in this format: ##)\n");
+
+    if(isNaN(input2) === false){
+        return input2;
+    }
+    else{
+        alert("Please enter a valid age..\n");
+        getSearchByAgeRangeInput2();
+    }
+}
+function initSearchByHeightSpecifics(input, people){
+    var filteredSearch = people.filter(function (el) {
+        if (convertInchesToFootInches(el.height) == input) {
+            return true
+        }
+        else {
+            return false
+        }
+    });
+    return filteredSearch;
+}
+function getSearchByHeightSpecificInput(){
     var input = prompt("Please enter a height to search by (in this format: #'#'')\n");
 
-    if(isNaN(input) === true) {
-        var filteredSearch = people.filter(function (el) {
-            if (convertInchesToFootInches(el.height) == input) {
-                return true
-            }
-            else {
-                return false
-            }
-        });
-        return filteredSearch;
+    if(isNaN(input) === true){
+        return true;
     }
     else{
         alert("Please enter a valid height..\n");
-        initSearchByHeightSpecifics(people);
+        getSearchByHeightSpecificInput();
     }
 }
-function initSearchByWeightSpecifics(people){
+function initSearchByWeightSpecifics(input, people){
+    var filteredSearch = people.filter(function (el) {
+        if (el.weight == input) {
+            return true
+        }
+        else {
+            return false
+        }
+    });
+    return filteredSearch;
+}
+function getSearchByWeightSpecificInput(){
     var input = prompt("Please enter a weight to search by (in this format: 150lbs)\n");
     var inputLowered = input.toLowerCase();
     var inputTrimmed = inputLowered.split(/[l]/)[0];
     var finalInput = parseInt(inputTrimmed);
 
-    if(isNaN(finalInput) === false) {
-        var filteredSearch = people.filter(function (el) {
-            if (el.weight == finalInput) {
-                return true
-            }
-            else {
-                return false
-            }
-        });
-        return filteredSearch;
+    if(isNaN(finalInput) === false){
+        return finalInput;
     }
     else{
         alert("Please enter a valid weight in the correct format..\n");
-        initSearchByWeightSpecifics(people);
+        getSearchByWeightSpecificInput();
     }
 }
-function initSearchByOccupationSpecifics(people){
+function initSearchByOccupationSpecifics(input, people){
+    var filteredSearch = people.filter(function (el) {
+        if (el.occupation == input.toLowerCase()) {
+            return true
+        }
+        else {
+            return false
+        }
+    });
+    return filteredSearch;
+}
+function getSearchByOccupationSpecificInput(){
     var input = prompt("Please enter an occupation to search by.\n");
 
     if(isNaN(input) === true) {
-        var filteredSearch = people.filter(function (el) {
-            if (el.occupation == input.toLowerCase()) {
-                return true
-            }
-            else {
-                return false
-            }
-        });
-        return filteredSearch;
+        return input;
     }
     else{
         alert("Please enter a valid occupation..\n");
-        initSearchByOccupationSpecifics(people);
+        getSearchByOccupationSpecificInput();
     }
 }
-function initSearchByEyeColorSpecifics(people){
+function initSearchByEyeColorSpecifics(input, people){
+    var filteredSearch = people.filter(function (el) {
+        if (el.eyeColor == input.toLowerCase()) {
+            return true
+        }
+        else {
+            return false
+        }
+    });
+    return filteredSearch;
+}
+function getSearchByEyeColorSpecificInput(){
     var input = prompt("Please enter an eye color to search by.\n");
 
     if(isNaN(input) === true) {
-        var filteredSearch = people.filter(function (el) {
-            if (el.eyeColor == input.toLowerCase()) {
-                return true
-            }
-            else {
-                return false
-            }
-        });
-        return filteredSearch;
+        return input;
     }
     else{
         alert("Please enter a valid eye color..\n");
-        initSearchByEyeColorSpecifics(people);
+        getSearchByEyeColorSpecificInput();
     }
 }
 function promptForSearchByName(people) {
@@ -637,7 +676,7 @@ function getParents(person, people){
         return person.parents.includes(el.id);
     });
     parentList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return parentList;
 }
@@ -646,7 +685,7 @@ function getSiblings(person, people){
         return el.parents.includes(person.parents);
     });
     siblingList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return siblingList;
 }
@@ -661,7 +700,7 @@ function getChildren(person, people){
         return el.parents.includes(person.id);
     });
     childrenList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return childrenList;
 }
@@ -674,7 +713,7 @@ function getGrandChildren(person, people){
         grandChildrenList.push(...grandChild);
     }
     grandChildrenList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return grandChildrenList;
 
@@ -688,7 +727,7 @@ function getGrandParents(person, people){
         grandParentsList.push(...grandParent);
     }
     grandParentsList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return grandParentsList;
 }
@@ -701,7 +740,7 @@ function getNiecesAndNephews(person, people){
         niecesAndNephewsList.push(...nieceAndNephew);
     }
     niecesAndNephewsList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return niecesAndNephewsList;
 }
@@ -714,7 +753,7 @@ function getAuntsAndUncles(person, people){
         auntsAndUnclesList.push(...auntAndUncle);
     }
     auntsAndUnclesList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return auntsAndUnclesList;
 }
@@ -727,7 +766,7 @@ function getGreatGrandChildren(person, people){
         greatGrandChildrenList.push(...greatGrandChild);
     }
     greatGrandChildrenList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return greatGrandChildrenList;
 }
@@ -740,7 +779,7 @@ function getGreatGrandParents(person, people){
         greatGrandParentsList.push(...greatGrandParent);
     }
     greatGrandParentsList.sort(function (a, b){
-        return b.value - a.value;
+        return getAge(b.dob) - getAge(a.dob);
     });
     return greatGrandParentsList;
 }
