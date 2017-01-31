@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="23a30a0b-37a2-41e2-9bb9-fa337f6e05f6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui-spec.js" afterPath="$PROJECT_DIR$/gui-spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui.js" afterPath="$PROJECT_DIR$/gui.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="gui.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gui.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gui.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28687">
-              <caret line="781" column="45" lean-forward="false" selection-start-line="781" selection-start-column="45" selection-end-line="781" selection-end-column="45" />
+            <state relative-caret-position="4554">
+              <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -57,7 +57,7 @@
       <file leaf-file-name="karma.conf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/karma.conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1058">
+            <state relative-caret-position="1104">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -76,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gui-spec.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gui-spec.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gui-spec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
@@ -89,7 +89,7 @@
       <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="949">
+            <state relative-caret-position="-109">
               <caret line="260" column="5" lean-forward="true" selection-start-line="209" selection-start-column="4" selection-end-line="260" selection-end-column="5" />
               <folding />
             </state>
@@ -118,8 +118,8 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/karma.conf.js" />
         <option value="$PROJECT_DIR$/gui-specs.js" />
-        <option value="$PROJECT_DIR$/gui.js" />
         <option value="$PROJECT_DIR$/gui-spec.js" />
+        <option value="$PROJECT_DIR$/gui.js" />
       </list>
     </option>
   </component>
@@ -133,10 +133,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="7984" />
-    <option name="y" value="-16" />
-    <option name="width" value="4832" />
-    <option name="height" value="2657" />
+    <option name="x" value="-16" />
+    <option name="y" value="60" />
+    <option name="width" value="3232" />
+    <option name="height" value="1756" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -315,12 +315,12 @@
       <workItem from="1485524944211" duration="14559000" />
       <workItem from="1485728922701" duration="223000" />
       <workItem from="1485787267369" duration="19210000" />
-      <workItem from="1485870386577" duration="2321000" />
+      <workItem from="1485870386577" duration="5054000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94277000" />
+    <option name="totallyTimeSpent" value="97010000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -332,7 +332,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="7984" y="-16" width="4832" height="2657" extended-state="6" />
+    <frame x="-16" y="60" width="3232" height="1756" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.094375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -717,16 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -743,26 +733,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.js">
+    <entry file="file://$PROJECT_DIR$/gui-spec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28687">
-          <caret line="781" column="45" lean-forward="false" selection-start-line="781" selection-start-column="45" selection-end-line="781" selection-end-column="45" />
+        <state relative-caret-position="92">
+          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1104">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="949">
+        <state relative-caret-position="-109">
           <caret line="260" column="5" lean-forward="true" selection-start-line="209" selection-start-column="4" selection-end-line="260" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui-spec.js">
+    <entry file="file://$PROJECT_DIR$/gui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        <state relative-caret-position="4554">
+          <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
           <folding />
         </state>
       </provider>

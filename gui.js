@@ -36,39 +36,53 @@ function initSearchBySpecificCharacteristics(people){
         }
 }
 function tailorSearchPrompts(people, search){
-    var filteredSearch = [];
-
+    var inputAge;
+    var inputRange;
+    var inputRange2;
+    var inputHeight;
+    var inputWeight;
+    var inputEye;
+    var inputOccupation;
     if(search.includes("age")){
-        var input = getSearchByAgeSpecificInput();
-        var ageResults = initSearchByAgeSpecifics(input, people);
-        filteredSearch.push(...ageResults);
+        inputAge = getSearchByAgeSpecificInput();
     }
     if(search.includes("range")){
-        var input = getSearchByAgeRangeInput();
-        var input2 = getSearchByAgeRangeInput2();
-        var ageRangeResults = initSearchByAgeRangeSpecifics(input, input2, people);
-        filteredSearch.push(...ageRangeResults);
+        inputRange = getSearchByAgeRangeInput();
+        inputRange2 = getSearchByAgeRangeInput2();
     }
     if(search.includes("height")){
-        var input = getSearchByHeightSpecificInput();
-        var heightResults = initSearchByHeightSpecifics(input, people);
-        filteredSearch.push(...heightResults);
+        inputHeight = getSearchByHeightSpecificInput();
     }
-    if(search.includes("weight")){
-        var input = getSearchByWeightSpecificInput();
-        var weightResults = initSearchByWeightSpecifics(input, people);
-        filteredSearch.push(...weightResults);
+    if(search.includes("weight")) {
+        inputWeight = getSearchByWeightSpecificInput();
     }
-    if(search.includes("eyecolor")){
-        var input = getSearchByEyeColorSpecificInput();
-        var eyeColorResults = initSearchByEyeColorSpecifics(input, people);
-        filteredSearch.push(...eyeColorResults);
+    if(search.includes("eyecolor")) {
+        inputEye = getSearchByEyeColorSpecificInput();
     }
-    if(search.includes("occupation")){
-        var input = getSearchByOccupationSpecificInput();
-        var occupationResults = initSearchByOccupationSpecifics(input, people);
-        filteredSearch.push(...occupationResults);
+    if(search.includes("occupation")) {
+        inputOccupation = getSearchByOccupationSpecificInput();
     }
+    var filteredSearch = people.filter(function (el) {
+        if(search.includes("age")){
+            return getAge(el.dob) == inputAge;
+        }
+        if(search.includes("range")){
+            return (getAge(el.dob) >= inputRange && getAge(el.dob) <= inputRange2);
+        }
+        if(search.includes("height")){
+            return convertInchesToFootInches(el.height) == inputHeight;
+        }
+        if(search.includes("weight")) {
+            return el.weight == inputWeight;
+        }
+        if(search.includes("eyecolor")) {
+            return el.eyeColor == inputEye.toLowerCase();
+        }
+        if(search.includes("occupation")) {
+            return el.occupation == inputOccupation.toLowerCase();
+        }
+    });
+
     return filteredSearch;
 }
 function initSearchByAgeSpecifics(input, people){
